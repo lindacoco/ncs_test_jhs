@@ -26,7 +26,7 @@ public class EmployeeUIpanel extends JPanel implements ActionListener {
 	private JButton btnCancel;
 	
 	public EmployeeUIpanel() {
-		service = new EmployeeUiService();
+		service= new EmployeeUiService();
 		initialize();
 	}
 	private void initialize() {
@@ -53,10 +53,12 @@ public class EmployeeUIpanel extends JPanel implements ActionListener {
 		pEmpTblPanel.setPopupMenu(createPopupMenu());
 		
 		pEmpPanel.setService(service);
-	
+		
+	    pEmpPanel.setEmpNo(pEmpTblPanel);
+
 	}
 	private JPopupMenu createPopupMenu() {
-JPopupMenu popMenu = new JPopupMenu();
+        JPopupMenu popMenu = new JPopupMenu();
 		
 		JMenuItem updateItem = new JMenuItem("수정");
 		updateItem.addActionListener(myPopMenuListener);
@@ -123,7 +125,7 @@ JPopupMenu popMenu = new JPopupMenu();
 	protected void btnAddActionPerformed(ActionEvent e) {
 		try {
 			Employee newEmp = pEmpPanel.getItem();
-//			LogUtil.prnLog(newEmp.toDebug());
+			LogUtil.prnLog(newEmp.toString());
 			service.addUpEmployee(newEmp);
 			pEmpTblPanel.addItem(newEmp);
 			pEmpPanel.clearTf();

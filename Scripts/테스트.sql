@@ -3,7 +3,7 @@ select user(), database ();
 
 select deptno, deptname, floor from department;
 select titleno, titlename from title;
-select empno,empname, title, manager, salary, dno from employee;
+select empno,empname, title, manager, salary, dno from employee order by empno;
 select * from employee e ;
 
 select titleno, titlename from title where titleno=1;
@@ -23,4 +23,4 @@ update employee set empname='권민수',title=3, manager=2, salary=5000000,dno=1
 delete from employee where empno=6;
 
 select e.empno, e.empname, t.titleno, t.titlename , e.salary, e.gender, d.deptname, d.deptno, d.floor, e.hiredate
-  from employee e left join title t on e.dno = t.titleno left join department d on e.dno =d.deptno ;
+  from employee e left join title t on e.dno = t.titleno left join department d on e.dno =d.deptno order by e.empno ;

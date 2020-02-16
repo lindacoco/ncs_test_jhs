@@ -141,7 +141,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public List<Employee> selectEmployeeByAll222() {
 		String sql="select e.empno, e.empname,t.titleno, t.titlename , e.salary, e.gender, d.deptname, d.deptno, d.floor, e.hiredate\r\n" + 
-				"  from employee e left join title t on e.dno = t.titleno left join department d on e.dno =d.deptno";
+				"  from employee e left join title t on e.dno = t.titleno left join department d on e.dno =d.deptno order by e.empno";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()){
@@ -171,5 +171,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		Date hireDate = rs.getTimestamp("e.hiredate");
 		return new Employee(empNo, empName, title, salary, dno, gender, hireDate);
 	}
+
+
 
 }

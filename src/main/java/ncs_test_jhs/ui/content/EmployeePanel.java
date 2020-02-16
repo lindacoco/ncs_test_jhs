@@ -24,6 +24,7 @@ import ncs_test_jhs.dto.Department;
 import ncs_test_jhs.dto.Employee;
 import ncs_test_jhs.dto.Title;
 import ncs_test_jhs.ui.EmployeeUIpanel;
+import ncs_test_jhs.ui.list.EmployeeTblPanel;
 import ncs_test_jhs.ui.service.EmployeeUiService;
 
 public class EmployeePanel extends AbsItemPanel<Employee> {
@@ -36,10 +37,11 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 	private JPanel pGender;
 	private JRadioButton radioMale;
 	private EmployeeUiService service;
+
 	
 	
 	public EmployeePanel() {
-	
+	    service= new EmployeeUiService();
 		initialize();
 	}
 	private void initialize() {
@@ -111,6 +113,9 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 		tfHireDate = new JDateChooser(new Date(),"yyyy-MM-dd hh:mm");
 		pEmp.add(tfHireDate);
 		
+	
+		
+		
 	}
 	public void setService(EmployeeUiService service) {
 		this.service = service;
@@ -141,11 +146,12 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 	    int empNo = Integer.parseInt(tfEmpNo.getText().trim());
 	    String empName = tfEmpName.getText().trim();
 	    Title title = (Title) cmbTitle.getSelectedItem();
+	    Employee manager = null;
 	    int salary = (int) spinner.getValue();
 	    Department dno = (Department) cmbDno.getSelectedItem();
 	    int gender = getGender();
 	    Date hireDate = tfHireDate.getDate();	
-		return new Employee(empNo, empName, title, salary, dno, gender, hireDate);
+		return new Employee(empNo, empName, title, manager, salary, dno, gender, hireDate);
 	}
 
 	private int getGender() {
@@ -186,6 +192,10 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 	public void setFirstNum(int a) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void setEmpNo(EmployeeTblPanel empTblPanel) {
+		tfEmpNo.setText(empTblPanel.getLastIndex()+"");
 	}
 
 }
