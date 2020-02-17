@@ -1,5 +1,6 @@
 package ncs_test_jhs.ui.list;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.swing.SwingConstants;
@@ -54,11 +55,11 @@ public class EmployeeTblPanel extends AbsTblPanel<Employee> {
 		int selectedIdx = getSelectdRowIndex();
 		int empNo = (int) model.getValueAt(selectedIdx, 0);
 		String empName = (String) model.getValueAt(selectedIdx, 1);
-		Title title = (Title) model.getValueAt(selectedIdx, 2);
-		int salary = (int) model.getValueAt(selectedIdx, 3);
+		Title title =new Title((String)model.getValueAt(selectedIdx, 2));
+		int salary = Integer.parseInt(((String)model.getValueAt(selectedIdx, 3)).replace(",","" ));
 		int gender = getGenderInt();
-		Department dno = (Department) model.getValueAt(selectedIdx, 5);
-		Date hireDate = (Date) model.getValueAt(selectedIdx, 6);
+		Department dno = new Department((String) model.getValueAt(selectedIdx, 5));
+		Date hireDate = new Date();
 
 		return new Employee(empNo, empName, title, salary, dno, gender, hireDate);
 	}

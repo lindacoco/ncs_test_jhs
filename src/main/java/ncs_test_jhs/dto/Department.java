@@ -19,6 +19,11 @@ public class Department {
 	
 	
 
+	public Department(String deptName) {
+		super();
+		this.deptName = deptName;
+	}
+
 	public Department(int deptNo, String deptName) {
 		super();
 		this.deptNo = deptNo;

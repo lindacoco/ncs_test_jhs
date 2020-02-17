@@ -19,6 +19,7 @@ public abstract class AbsTblPanel<T> extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 	protected notEditableModel model;
+	protected List<T> list;
 	
 	
 	public AbsTblPanel() {
@@ -78,7 +79,8 @@ public abstract class AbsTblPanel<T> extends JPanel {
 	protected abstract String[] getColumnNames();
 	protected abstract void setTblWidthAlign();
 	public abstract void updateRow(T item, int updateIdx);
-	public abstract T getSelectedItem(); 
+	
+	
 	
 	//리스트에 추가시키기
 		public void addItem(T item) {
@@ -90,6 +92,12 @@ public abstract class AbsTblPanel<T> extends JPanel {
 			model.removeRow(selectedIdx);
 		}
 
+		
+   public T getSelectedItem() {
+			int selectedIdx = getSelectdRowIndex();
+			return list.get(selectedIdx);
+		};	
+	
 		
 	public int getSelectdRowIndex() { //선택한 row의 인덱스값 구하기 tbl패널에서 부르려면 public으로 고쳐야했음 
 			int selectedIdx = table.getSelectedRow();

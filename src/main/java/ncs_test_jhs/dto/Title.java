@@ -15,6 +15,13 @@ public class Title {
 		this.titleName = titleName;
 	}
 
+	
+	
+	public Title(String titleName) {
+		super();
+		this.titleName = titleName;
+	}
+
 	public Title(int titleNo) {
 		super();
 		this.titleNo = titleNo;

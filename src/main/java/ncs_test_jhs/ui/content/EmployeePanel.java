@@ -11,6 +11,7 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
@@ -113,7 +114,7 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 		lblHireDate.setHorizontalAlignment(SwingConstants.RIGHT);
 		pEmp.add(lblHireDate);
 		
-		tfHireDate = new JDateChooser(new Date(),"yyyy-MM-dd hh:mm");
+		tfHireDate = new JDateChooser(new Date(),"yyyy-MM-dd");
 		pEmp.add(tfHireDate);
 		
 	    
@@ -152,6 +153,7 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 		
 	    int empNo = Integer.parseInt(tfEmpNo.getText().trim());
 	    String empName = tfEmpName.getText().trim();
+        
 	    Title title = (Title) cmbTitle.getSelectedItem();
 	    Employee manager = null;
 	    int salary = (int) spinner.getValue();

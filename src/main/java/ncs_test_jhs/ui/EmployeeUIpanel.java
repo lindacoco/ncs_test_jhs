@@ -79,14 +79,16 @@ public class EmployeeUIpanel extends JPanel implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getActionCommand().equals("수정")) {
+				btnAdd.setText("수정");
 				Employee upEmp = pEmpTblPanel.getSelectedItem();
 				pEmpPanel.setItem(upEmp);
-				btnAdd.setText("수정");
+				
 			}
 			if (e.getActionCommand().equals("삭제")) {
 				Employee delEmp = pEmpTblPanel.getSelectedItem();
 				service.removeEmployee(delEmp);
 				pEmpTblPanel.removeRow();
+				pEmpPanel.setEmpNo(pEmpTblPanel);
 				JOptionPane.showMessageDialog(null, "삭제되었습니다.");
 			}
 		}
@@ -98,6 +100,7 @@ public class EmployeeUIpanel extends JPanel implements ActionListener {
 		if (e.getSource() == btnAdd) {
 			if (e.getActionCommand().contentEquals("추가")) {
 				btnAddActionPerformed(e);
+				pEmpPanel.setEmpNo(pEmpTblPanel);
 			}else {
 				btnUpdateActionPerformed(e);
 			}
@@ -129,6 +132,7 @@ public class EmployeeUIpanel extends JPanel implements ActionListener {
 	protected void btnAddActionPerformed(ActionEvent e) {
 		try {
 			Employee newEmp = pEmpPanel.getItem();
+			
 			System.out.println(newEmp); //[6 dd 6 1500000 2 0 2020-02-16 18:22:28]
 			LogUtil.prnLog(newEmp.toString());
 			service.addUpEmployee(newEmp);
