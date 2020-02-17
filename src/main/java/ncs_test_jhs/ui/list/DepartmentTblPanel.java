@@ -51,7 +51,7 @@ public class DepartmentTblPanel extends AbsTblPanel<Department> {
 	public int getLastIndex() {
 		int lastIdx = getLastRowIndex();
 		int num =(int) model.getValueAt(lastIdx-1, 0) ;  //테이블 인덱스가 0 부터 시작해서 
-		return num+1;
+		return num+1;  //마지막 숫자보다 한자리 큰 수가 리턴되도록 함 
 	}
 	
 

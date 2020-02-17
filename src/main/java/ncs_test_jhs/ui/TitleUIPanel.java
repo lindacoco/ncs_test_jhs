@@ -50,7 +50,7 @@ public class TitleUIPanel extends JPanel implements ActionListener {
 		pTblPanel.loadData(service.showTitleList());
 		pTblPanel.setPopupMenu(myPopup()); //팝업메뉴 만들기
 		
-		pTitlePanel.setFirstNum(service.setFirstNum());
+		pTitlePanel.setTitleNo(pTblPanel);
 		
 		
 		

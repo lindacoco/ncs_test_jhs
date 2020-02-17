@@ -36,9 +36,11 @@ public class DepartmentUIPanel extends JPanel implements ActionListener{
 		add(btns);
 		
 		btnAdd = new JButton("추가");
+		btnAdd.addActionListener(this);
 		btns.add(btnAdd);
 		
 		btnCancel = new JButton("취소");
+		btnCancel.addActionListener(this);
 		btns.add(btnCancel);
 		
 		pDeptTblPanel = new DepartmentTblPanel();		
@@ -46,6 +48,8 @@ public class DepartmentUIPanel extends JPanel implements ActionListener{
 		pDeptTblPanel.setPopupMenu(myPopup());
 		
 		add(pDeptTblPanel);
+		
+		pDeptPanel.setDeptNo(pDeptTblPanel);
 	}
 
 	private JPopupMenu myPopup() {
@@ -85,6 +89,7 @@ public class DepartmentUIPanel extends JPanel implements ActionListener{
 				btnAddActionPerformed(e);
 			}else {
 			btnUpdateActionPerfromed(e);
+			pDeptPanel.setDeptNo(pDeptTblPanel);
 		  }
 		}
 		if (e.getSource() == btnCancel) {
@@ -110,6 +115,7 @@ public class DepartmentUIPanel extends JPanel implements ActionListener{
 			Department newDept = pDeptPanel.getItem();
 			service.addUpDepartment(newDept);
 			pDeptTblPanel.addItem(newDept);
+			pDeptPanel.clearTf();
 //			pDeptPanel.setFirstNum(service.setFirstNum());
 			
 		}catch(Exception e1) {

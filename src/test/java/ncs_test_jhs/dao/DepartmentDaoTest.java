@@ -41,7 +41,7 @@ public class DepartmentDaoTest {
 	}
 
 	@Test
-	public void test02SelectTitleByAll() {
+	public void test02SelectDepartmentByAll() {
 		LogUtil.prnLog(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		List<Department> dept = dao.selectDepartmentByAll();
 		Assert.assertNotNull(dept);

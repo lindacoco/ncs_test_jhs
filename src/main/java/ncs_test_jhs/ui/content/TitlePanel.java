@@ -2,6 +2,7 @@ package ncs_test_jhs.ui.content;
 
 import ncs_test_jhs.dao.TitleDao;
 import ncs_test_jhs.dto.Title;
+import ncs_test_jhs.ui.list.TitleTblPanel;
 import ncs_test_jhs.ui.service.TitleUiService;
 
 import java.awt.GridLayout;
@@ -68,6 +69,10 @@ public class TitlePanel extends AbsItemPanel<Title> {
 	public void setFirstNum(int a) {
 		tfTitleNo.setText(String.format("T%03d", a));
 		//String.format("T%03d", list.getTitleNo())
+	}
+	
+	public void setTitleNo(TitleTblPanel titleTblPanel) {
+		tfTitleNo.setText(titleTblPanel.getLastIndex()+"");
 	}
 
 }

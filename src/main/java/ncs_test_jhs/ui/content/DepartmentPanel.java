@@ -26,6 +26,7 @@ public class DepartmentPanel extends AbsItemPanel<Department> {
 		add(lblDeptNo);
 		
 		tfDeptNo = new JTextField();
+		tfDeptNo.setEditable(false);
 		add(tfDeptNo);
 		tfDeptNo.setColumns(10);
 		
@@ -75,7 +76,7 @@ public class DepartmentPanel extends AbsItemPanel<Department> {
 	}
 	
 	public void setDeptNo(DepartmentTblPanel detpTblPanel) {
-		tfDeptNo.setText(deptTblPanel.getLastIndex()+"");
+		tfDeptNo.setText(detpTblPanel.getLastIndex()+"");
 	}
 
 }
