@@ -40,10 +40,14 @@ public class EmployeeUIpanel extends JPanel implements ActionListener {
 		add(btns);
 		
 		btnAdd = new JButton("추가");
+		btnAdd.addActionListener(this);
 		btns.add(btnAdd);
 		
+		
 		btnCancel = new JButton("취소");
+		btnCancel.addActionListener(this);
 		btns.add(btnCancel);
+		
 		
 		pEmpTblPanel = new EmployeeTblPanel();
 		add(pEmpTblPanel);
@@ -125,19 +129,16 @@ public class EmployeeUIpanel extends JPanel implements ActionListener {
 	protected void btnAddActionPerformed(ActionEvent e) {
 		try {
 			Employee newEmp = pEmpPanel.getItem();
+			System.out.println(newEmp); //[6 dd 6 1500000 2 0 2020-02-16 18:22:28]
 			LogUtil.prnLog(newEmp.toString());
 			service.addUpEmployee(newEmp);
 			pEmpTblPanel.addItem(newEmp);
 			pEmpPanel.clearTf();
-			JOptionPane.showMessageDialog(null, String.format("%s(%d) 추가되었습니다.", newEmp.getEmpName(), newEmp.getEmpNo()));
+			
+//			JOptionPane.showMessageDialog(null, String.format("%s(%d) 추가되었습니다.", newEmp.getEmpName(), newEmp.getEmpNo()));
 		
 		}catch(Exception e1) {
-			SQLException e2 = (SQLException) e1;
-			if (e2.getErrorCode() == 1062) {
-				JOptionPane.showMessageDialog(null, "부서번호가 중복");
-				System.err.println(e2.getMessage());
-				return;
-			}
+			System.out.println(e1.getStackTrace());
 			e1.printStackTrace();
 		}
 	}

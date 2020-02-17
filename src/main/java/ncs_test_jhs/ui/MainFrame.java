@@ -17,6 +17,9 @@ public class MainFrame extends JFrame implements ActionListener {
 	private JButton btnTitle;
 	private JButton btnEmp;
 	private JButton btnDept;
+	private JFrame deptFrame;
+	private JFrame empFrame;
+	private JFrame titleFrame;
 
 	/**
 	 * Launch the application.
@@ -70,6 +73,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnDept) {
 			btnDeptActionPerformed(e);
+			
 		}
 		if (e.getSource() == btnEmp) {
 			btnEmpActionPerformed(e);
@@ -79,25 +83,49 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 	}
 	protected void btnTitleActionPerformed(ActionEvent e) {
-		JFrame frame = new JFrame();
-		frame.setBounds(100,100,400,300);
-		TitleUIPanel tu = new TitleUIPanel();
-		frame.add(tu);
-		frame.setVisible(true);
-	}
-	protected void btnEmpActionPerformed(ActionEvent e) {
-		JFrame frame = new JFrame();
-		frame.setBounds(100,100,600,500);
-		EmployeeUIpanel eu = new EmployeeUIpanel();
-		frame.add(eu);
-		frame.setVisible(true);
+		if(titleFrame==null) {
+			titleFrame = new JFrame();
+			titleFrame.setBounds(100,100,400,300);
+			TitleUIPanel tu = new TitleUIPanel();
+			titleFrame.add(tu);
+			titleFrame.setVisible(true);
+		}
+		else {
+			if(titleFrame.isVisible()) {
+				return;
+			}
+			titleFrame.setVisible(true);
+		}
 		
 	}
+	protected void btnEmpActionPerformed(ActionEvent e) {
+		if(empFrame == null) {
+		empFrame = new JFrame();
+		empFrame.setBounds(100,100,600,500);
+		EmployeeUIpanel eu = new EmployeeUIpanel();
+		empFrame.add(eu);
+		empFrame.setVisible(true);
+	  }	else {
+		  if(empFrame.isVisible()) {
+			  return;
+		  }
+		  empFrame.setVisible(true);
+	  }
+	
+	}
 	protected void btnDeptActionPerformed(ActionEvent e) {
-		JFrame frame = new JFrame();
-		frame.setBounds(100,100,500,700);
+		if(deptFrame == null) {
+		deptFrame = new JFrame();
+		deptFrame.setBounds(100,100,500,700);
 		DepartmentUIPanel du = new DepartmentUIPanel();
-		frame.add(du);
-		frame.setVisible(true);
+		deptFrame.add(du);
+		deptFrame.setVisible(true);
+	  }	
+		else {
+			if(deptFrame.isVisible()) {
+				return;
+			}
+			deptFrame.setVisible(true);
+		}
 	}
 }

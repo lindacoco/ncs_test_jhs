@@ -37,6 +37,9 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 	private JPanel pGender;
 	private JRadioButton radioMale;
 	private EmployeeUiService service;
+	private EmployeeTblPanel empTblPanel;
+	private EmployeePanel empPanel;
+	private JRadioButton radioFemale; 
 
 	
 	
@@ -96,9 +99,9 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 		radioMale.setHorizontalAlignment(SwingConstants.RIGHT);
 		pGender.add(radioMale);
 		
-		JRadioButton radioFemale = new JRadioButton("여");
+		radioFemale = new JRadioButton("여");
 		pGender.add(radioFemale);
-		
+
 		JLabel lblDno = new JLabel("부서");
 		lblDno.setHorizontalAlignment(SwingConstants.RIGHT);
 		pEmp.add(lblDno);
@@ -113,7 +116,7 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 		tfHireDate = new JDateChooser(new Date(),"yyyy-MM-dd hh:mm");
 		pEmp.add(tfHireDate);
 		
-	
+	    
 		
 		
 	}
@@ -143,6 +146,10 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 	}
 	@Override
 	public Employee getItem() {
+		if(radioFemale.isSelected() == true) {
+			radioMale.setSelected(false);
+		}
+		
 	    int empNo = Integer.parseInt(tfEmpNo.getText().trim());
 	    String empName = tfEmpName.getText().trim();
 	    Title title = (Title) cmbTitle.getSelectedItem();
@@ -180,7 +187,9 @@ public class EmployeePanel extends AbsItemPanel<Employee> {
 	
 	@Override
 	public void clearTf() {
+//		empPanel.setEmpNo(empTblPanel);
 		tfEmpNo.setText(""); //이거 나중에 수정 
+//		tfEmpNo.setText(empTblPanel.getLastIndex()+"");
 	    tfEmpName.setText("");
 	    cmbTitle.setSelectedIndex(-1);
 	    spinner.setValue(1500000);

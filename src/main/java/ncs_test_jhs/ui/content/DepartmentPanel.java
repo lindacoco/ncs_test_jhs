@@ -1,6 +1,8 @@
 package ncs_test_jhs.ui.content;
 
 import ncs_test_jhs.dto.Department;
+import ncs_test_jhs.ui.list.DepartmentTblPanel;
+
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -11,6 +13,8 @@ public class DepartmentPanel extends AbsItemPanel<Department> {
 	private JTextField tfDeptNo;
 	private JTextField tfDeptName;
 	private JTextField tfDeptFloor;
+	private DepartmentTblPanel deptTblPanel;
+
 	public DepartmentPanel() {
 		initialize();
 	}
@@ -61,14 +65,17 @@ public class DepartmentPanel extends AbsItemPanel<Department> {
 	public void clearTf() {
 		tfDeptNo.setText("");
 		tfDeptName.setText("");
-		tfDeptFloor.setText("");
-		
+		tfDeptFloor.setText("");		
 	}
 
 	@Override
 	public void setFirstNum(int a) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void setDeptNo(DepartmentTblPanel detpTblPanel) {
+		tfDeptNo.setText(deptTblPanel.getLastIndex()+"");
 	}
 
 }

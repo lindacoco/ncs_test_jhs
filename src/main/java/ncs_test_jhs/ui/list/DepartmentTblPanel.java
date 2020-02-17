@@ -46,5 +46,13 @@ public class DepartmentTblPanel extends AbsTblPanel<Department> {
 		int floor = (int) model.getValueAt(selectedIdx, 2);
 		return new Department(deptNo, deptName, floor);
 	}
+	
+	
+	public int getLastIndex() {
+		int lastIdx = getLastRowIndex();
+		int num =(int) model.getValueAt(lastIdx-1, 0) ;  //테이블 인덱스가 0 부터 시작해서 
+		return num+1;
+	}
+	
 
 }

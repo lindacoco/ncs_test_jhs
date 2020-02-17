@@ -24,3 +24,6 @@ delete from employee where empno=6;
 
 select e.empno, e.empname, t.titleno, t.titlename , e.salary, e.gender, d.deptname, d.deptno, d.floor, e.hiredate
   from employee e left join title t on e.dno = t.titleno left join department d on e.dno =d.deptno order by e.empno ;
+  
+delete from employee where empno in(9);
+delete from title where titleno in(5,6,7,8,9,10,11,12,13,15,16);

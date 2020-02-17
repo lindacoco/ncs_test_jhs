@@ -178,11 +178,11 @@ public class Employee {
 	@Override
 	public String toString() {
 		
-		return String.format("[%s %s %s %s %s %s %s %s]", 
+		return String.format("[%s %s %s %s %s %s %s]", 
                  empNo,
                  empName,
                  title.getTitleNo(),
-                 manager.getEmpNo(),
+  //               manager.getEmpNo(),
                  salary,
                  dno.getDeptNo(),
                  gender,

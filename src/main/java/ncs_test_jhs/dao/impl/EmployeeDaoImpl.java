@@ -78,17 +78,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public int insertEmp(Employee emp) {
-		String sql ="insert into employee(empno,empname,title,manager,salary,dno,gender,hiredate) values (?,?,?,?,?,?,?,?)";
+		String sql ="insert into employee(empno,empname,title,salary,dno,gender,hiredate) values (?,?,?,?,?,?,?)";
 		try(Connection con = MySqlDataSource.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 			pstmt.setInt(1,emp.getEmpNo());
 			pstmt.setString(2, emp.getEmpName());
 			pstmt.setInt(3, emp.getTitle().getTitleNo());
-			pstmt.setInt(4, emp.getManager().getEmpNo());
-			pstmt.setInt(5, emp.getSalary());
-			pstmt.setInt(6, emp.getDno().getDeptNo());
-			pstmt.setInt(7,emp.getGender());
-			pstmt.setTimestamp(8, new Timestamp(emp.getHireDate().getTime()));
+//			pstmt.setInt(4, emp.getManager().getEmpNo());
+
+			pstmt.setInt(4, emp.getSalary());
+			pstmt.setInt(5, emp.getDno().getDeptNo());
+			pstmt.setInt(6,emp.getGender());
+			pstmt.setTimestamp(7, new Timestamp(emp.getHireDate().getTime()));
 			LogUtil.prnLog(pstmt);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
